@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>선택 결과</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>선택한 재료와 과일의 조합</h1>
+  <p id="recipe-output">로딩 중...</p>
+
+  <footer>한양대 인터칼리지학과 G19</footer>
+
+  <script>
+    const ingredient = localStorage.getItem('selectedIngredient');
+    const recipeOutput = document.getElementById('recipe-output');
+
+    const recipes = {
+      "우유": "우유와 바나나를 함께 갈아 마시면 훌륭한 바나나 우유가 완성돼요!",
+      "계란": "계란과 과일은 조합이 어색할 수 있어요. 하지만 샐러드에 함께 올리면 색다른 느낌!",
+      "쌀": "쌀과 망고를 이용해서 '망고찹쌀밥'을 만들어보세요. 동남아 인기 디저트예요.",
+      "면": "면과 과일은 어울리지 않지만, 후식으로 과일을 곁들여 보세요!",
+      "김치": "김치와 과일은... 조금 위험한 조합이에요. 도전정신이 있다면 한번?!"
+    };
+
+    recipeOutput.textContent = recipes[ingredient] || "선택된 재료가 없습니다.";
+  </script>
+</body>
+</html>
