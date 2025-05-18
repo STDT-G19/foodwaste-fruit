@@ -1,0 +1,66 @@
+body {
+  font-family: 'Nanum Myeongjo', serif;
+  background-color: #fffaf0;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #2c3e50;
+}
+
+header {
+  background-color: #f6e9dc;
+  padding: 30px 0;
+}
+
+h1 {
+  font-size: 2.2em;
+  margin-bottom: 5px;
+}
+
+.menu-section {
+  padding: 30px;
+}
+
+.main-img {
+  max-width: 300px;
+  height: auto;
+  border-radius: 20px;
+  margin: 15px 0;
+}
+
+.sub-text {
+  font-size: 1.1em;
+  margin-bottom: 20px;
+}
+
+.recipes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.recipe {
+  background-color: #fff;
+  border: 2px solid #f0e0d0;
+  padding: 20px;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 15px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+.recipe h3 {
+  margin-top: 0;
+  color: #e67e22;
+}
+
+footer {
+  margin-top: 50px;
+  padding: 20px;
+  background-color: #f0f0f0;
+  font-size: 0.9em;
+}
