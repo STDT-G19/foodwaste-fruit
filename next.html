@@ -4,86 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title id="title">레시피 결과</title>
-
+  <link href="style.css" rel="stylesheet" />
   <style>
-    /* 기본 배경 및 텍스트 스타일 */
-    body {
-      font-family: "Arial", sans-serif;
-      margin: 0;
-      padding: 30px 20px;
-      background-color: #fdfdfd;
-      color: #2c3e50;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 2em;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      margin-top: 30px;
-      font-size: 1.3em;
-      color: #34495e;
-    }
-
-    .recipe-img {
-      width: 100%;
-      max-width: 400px;
-      height: auto;
-      margin: 25px auto 30px;
+    /* 뒤로가기 버튼 (치킨 사이트 next-btn 스타일과 유사하게) */
+    .back-btn {
+      margin: 20px auto;
+      padding: 10px 25px;
+      font-size: 1.1em;
+      background-color: #3498db;  /* 치킨 사이트 next-btn과 동일 */
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
       display: block;
-      border-radius: 15px;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .recipe-img:hover {
-      transform: scale(1.02);
-    }
-
-    .recipe-text {
-      max-width: 600px;
-      margin: 0 auto;
-      text-align: left;
-      line-height: 1.7;
-    }
-
-    .recipe-text ul {
-      padding-left: 20px;
-      list-style: disc;
-    }
-
-    .recipe-text li {
-      margin-bottom: 8px;
-    }
-
-    .reference {
-      font-size: 0.85em;
-      font-style: italic;
-      margin-top: 30px;
-      text-align: left;
-      color: #555;
-    }
-
-    .reference a {
-      color: #2980b9;
-      text-decoration: underline;
-    }
-
-    footer {
-      margin-top: 50px;
-      font-size: 0.9em;
-      color: #999;
       text-align: center;
-      border-top: 1px solid #ddd;
-      padding-top: 20px;
+      transition: background-color 0.2s;
+    }
+    .back-btn:hover {
+      background-color: #2980b9;
     }
   </style>
 </head>
 <body>
   <h1 id="title">레시피 결과</h1>
-  <img id="recipe-img" class="recipe-img" src="" alt="요리 이미지" style="display: none;" />
+  <img id="recipe-img" class="recipe-img" src="" alt="요리 이미지" />
+
+  <!-- 뒤로가기 버튼 -->
+  <button class="back-btn" onclick="window.history.back()">뒤로가기</button>
+
   <div id="recipe-container" class="recipe-text"></div>
 
   <footer>한양대 인터칼리지학과 G19</footer>
@@ -178,14 +126,14 @@
       img.style.display = "block";
 
       const container = document.getElementById("recipe-container");
-      const stepsKr = recipe.steps_kr.map(step => `<li>${step}</li>`).join("");
-      const stepsEn = recipe.steps_en.map(step => `<li>${step}</li>`).join("");
+      const stepsKr = recipe.steps_kr.map(s => `<li>${s}</li>`).join("");
+      const stepsEn = recipe.steps_en.map(s => `<li>${s}</li>`).join("");
 
       container.innerHTML = `
         <h2>레시피 설명 (한국어)</h2>
-        <ul>${stepsKr}</ul>
+        <ul class="recipe-text">${stepsKr}</ul>
         <h2>Recipe Instructions (English)</h2>
-        <ul>${stepsEn}</ul>
+        <ul class="recipe-text">${stepsEn}</ul>
         <div class="reference">
           🔗 Reference: <a href="${recipe.reference}" target="_blank">${recipe.reference}</a>
         </div>
