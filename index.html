@@ -8,15 +8,25 @@
 </head>
 <body>
   <h1>FOODWASTE - 과일</h1>
-  <img src="food_picture/fruit.jpg" alt="과일 이미지" />
-  <p><strong>과일과 잘 어울릴 재료를 골라주세요 (하나만)</strong></p>
+  <img src="food_picture/fruit.jpg" alt="과일 대표 이미지" class="main-img" />
+  <p><strong>과일과 어울릴 재료를 골라주세요 (하나만)</strong></p>
 
   <div class="ingredients">
-    <div class="ingredient">꿀</div>
-    <div class="ingredient">토마토</div>
-    <div class="ingredient">요거트</div>
-    <div class="ingredient">새우</div>
-    <div class="ingredient">땅콩버터</div>
+    <div class="ingredient" onclick="selectIngredient('꿀')">
+      <img src="food_picture/honey.jpg" alt="꿀">꿀
+    </div>
+    <div class="ingredient" onclick="selectIngredient('토마토')">
+      <img src="food_picture/tomato.jpg" alt="토마토">토마토
+    </div>
+    <div class="ingredient" onclick="selectIngredient('요거트')">
+      <img src="food_picture/yogurt.jpg" alt="요거트">요거트
+    </div>
+    <div class="ingredient" onclick="selectIngredient('새우')">
+      <img src="food_picture/shrimp.jpg" alt="새우">새우
+    </div>
+    <div class="ingredient" onclick="selectIngredient('땅콩버터')">
+      <img src="food_picture/peanut.jpg" alt="땅콩버터">땅콩버터
+    </div>
   </div>
 
   <button class="next-btn" onclick="goToNextPage()">다음으로</button>
@@ -24,22 +34,21 @@
   <footer>한양대 인터칼리지학과 G19</footer>
 
   <script>
-    const ingredients = document.querySelectorAll('.ingredient');
-    const nextBtn = document.querySelector('.next-btn');
-    let selectedText = "";
+    let selectedIngredient = "";
 
-    ingredients.forEach(item => {
-      item.addEventListener('click', () => {
-        ingredients.forEach(i => i.classList.remove('selected'));
-        item.classList.add('selected');
-        selectedText = item.textContent.trim();
-        nextBtn.style.display = 'inline-block';
-      });
-    });
+    function selectIngredient(name) {
+      document.querySelectorAll('.ingredient').forEach(el => el.classList.remove('selected'));
+      const target = [...document.querySelectorAll('.ingredient')].find(el => el.textContent.includes(name));
+      target.classList.add('selected');
+      selectedIngredient = name;
+      document.querySelector('.next-btn').style.display = 'inline-block';
+    }
 
     function goToNextPage() {
-      localStorage.setItem('selectedIngredient', selectedText);
-      window.location.href = 'next.html';
+      if (selectedIngredient) {
+        localStorage.setItem('selectedIngredient', selectedIngredient);
+        window.location.href = "next.html";
+      }
     }
   </script>
 </body>
