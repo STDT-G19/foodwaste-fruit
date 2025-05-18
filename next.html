@@ -2,48 +2,26 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FOODWASTE - 과일 레시피</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    .recipe-img {
-      width: 300px;
-      border-radius: 12px;
-      margin: 20px auto;
-      display: block;
-    }
-    .reference {
-      font-size: 0.85em;
-      font-style: italic;
-      margin-top: 25px;
-      color: #555;
-    }
-    .reference a {
-      color: #2980b9;
-      text-decoration: underline;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title id="title">레시피 결과</title>
+  <link href="style.css" rel="stylesheet" />
 </head>
 <body>
-  <h1 id="title">레시피</h1>
-  <img id="recipe-img" class="recipe-img" src="" alt="레시피 이미지" style="display:none;" />
-  <div id="recipe-container"></div>
+  <h1 id="title">레시피 결과</h1>
+  <img id="recipe-img" class="recipe-img" src="" alt="요리 이미지" style="display: none;" />
+  
+  <div id="recipe-container" class="recipe-text"></div>
 
   <footer>한양대 인터칼리지학과 G19</footer>
 
   <script>
-    const ingredient = localStorage.getItem('selectedIngredient');
-    const title = document.getElementById('title');
-    const container = document.getElementById('recipe-container');
-    const recipeImg = document.getElementById('recipe-img');
-
     const recipes = {
       "꿀": {
         name: "꿀 배 브리 토스트 (Honey-Glazed Pear & Brie Toast)",
         image: "food_picture/pear_toast.jpg",
         steps_kr: [
           "1. 사워도우를 바삭하게 굽습니다.",
-          "2. 버터와 꿀에 배를 볶습니다.",
+          "2. 버터와 꿀에 배를 부드럽게 볶습니다.",
           "3. 토스트 위에 브리치즈와 배를 얹고 타임과 견과류를 뿌립니다."
         ],
         steps_en: [
@@ -115,38 +93,30 @@
       }
     };
 
-    if (recipes[ingredient]) {
-      const recipe = recipes[ingredient];
-      title.textContent = recipe.name;
-      container.innerHTML = "";
+    const selected = localStorage.getItem("selectedIngredient");
+    const recipe = recipes[selected];
 
-      // 이미지 출력
-      recipeImg.src = recipe.image;
-      recipeImg.alt = recipe.name;
-      recipeImg.style.display = "block";
+    if (recipe) {
+      document.getElementById("title").textContent = recipe.name;
+      const img = document.getElementById("recipe-img");
+      img.src = recipe.image;
+      img.style.display = "block";
 
-      // 한국어 레시피
-      recipe.steps_kr.forEach(step => {
-        const p = document.createElement('p');
-        p.textContent = step;
-        container.appendChild(p);
-      });
+      const container = document.getElementById("recipe-container");
+      const stepsKr = recipe.steps_kr.map(step => `<li>${step}</li>`).join("");
+      const stepsEn = recipe.steps_en.map(step => `<li>${step}</li>`).join("");
 
-      // 영어 레시피
-      recipe.steps_en.forEach(step => {
-        const p = document.createElement('p');
-        p.textContent = step;
-        container.appendChild(p);
-      });
-
-      // 참고 링크
-      const ref = document.createElement('div');
-      ref.className = 'reference';
-      ref.innerHTML = `🔗 Reference: <a href="${recipe.reference}" target="_blank">${recipe.reference}</a>`;
-      container.appendChild(ref);
+      container.innerHTML = `
+        <h2>레시피 설명 (한국어)</h2>
+        <ul>${stepsKr}</ul>
+        <h2>Recipe Instructions (English)</h2>
+        <ul>${stepsEn}</ul>
+        <p style="margin-top: 20px; font-size: 0.9em; font-style: italic;">
+          Reference: <a href="${recipe.reference}" target="_blank">${recipe.reference}</a>
+        </p>
+      `;
     } else {
-      title.textContent = "레시피 없음";
-      container.innerHTML = "<p>선택된 재료에 대한 레시피가 없습니다.</p>";
+      document.getElementById("recipe-container").innerHTML = "<p>선택된 재료가 없습니다.</p>";
     }
   </script>
 </body>
