@@ -1,9 +1,22 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FOODWASTE - 과일 레시피</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .reference {
+      font-size: 0.85em;
+      font-style: italic;
+      margin-top: 25px;
+      color: #555;
+    }
+    .reference a {
+      color: #2980b9;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
   <h1 id="title">레시피</h1>
@@ -23,9 +36,9 @@
           "1. Toast sourdough bread slices.",
           "2. Saute pear slices in butter and honey until soft.",
           "3. Layer brie and pear on toast, sprinkle with thyme and nuts.",
-          "[사워도우를 바삭하게 굽습니다. 버터와 꿀에 배를 볶습니다. 토스트 위에 브리치즈와 배를 얹고 타임과 견과류를 뿌립니다.]",
-          "Reference: https://www.twopeasandtheirpod.com/grilled-pear-brie-and-honey-crostini-recipe/"
-        ]
+          "[사워도우를 바삭하게 굽습니다. 버터와 꿀에 배를 볶습니다. 토스트 위에 브리치즈와 배를 얹고 타임과 견과류를 뿌립니다.]"
+        ],
+        reference: "https://www.twopeasandtheirpod.com/grilled-pear-brie-and-honey-crostini-recipe/"
       },
       "토마토": {
         name: "Peach Caprese Salad (복숭아 카프레제 샐러드)",
@@ -33,9 +46,9 @@
           "1. Slice peaches, mozzarella, and tomatoes.",
           "2. Arrange on a plate with basil.",
           "3. Drizzle with balsamic glaze and olive oil.",
-          "[복숭아, 모짜렐라, 토마토를 얇게 썹니다. 접시에 바질과 함께 담습니다. 발사믹 글레이즈와 올리브유를 뿌립니다.]",
-          "Reference: https://m.blog.naver.com/chez_sophie/220797973395"
-        ]
+          "[복숭아, 모짜렐라, 토마토를 얇게 썹니다. 접시에 바질과 함께 담습니다. 발사믹 글레이즈와 올리브유를 뿌립니다.]"
+        ],
+        reference: "https://m.blog.naver.com/chez_sophie/220797973395"
       },
       "요거트": {
         name: "Berry Yogurt Parfait with Granola (베리 요거트 파르페)",
@@ -43,9 +56,9 @@
           "1. Layer yogurt, berries, and granola in a glass.",
           "2. Repeat layers.",
           "3. Top with honey and fresh mint (optional).",
-          "[컵에 요거트, 베리, 그래놀라를 층층이 담습니다. 한 번 더 층을 쌓습니다. 꿀과 민트를 올려 마무리합니다.]",
-          "Reference: https://www.allrecipes.com/recipe/55813/summer-berry-parfait-with-yogurt-and-granola/"
-        ]
+          "[컵에 요거트, 베리, 그래놀라를 층층이 담습니다. 한 번 더 층을 쌓습니다. 꿀과 민트를 올려 마무리합니다.]"
+        ],
+        reference: "https://www.allrecipes.com/recipe/55813/summer-berry-parfait-with-yogurt-and-granola/"
       },
       "새우": {
         name: "Kiwi Shrimp Skewers (키위를 곁들인 새우 꼬치구이)",
@@ -53,9 +66,9 @@
           "1. Skewer shrimp with kiwi and bell pepper chunks.",
           "2. Grill or pan-sear until cooked.",
           "3. Drizzle with lime juice and sprinkle chili flakes.",
-          "[새우, 키위, 파프리카를 꼬치에 꽂습니다. 그릴 또는 팬에 구워 익힙니다. 라임즙을 뿌리고 칠리 플레이크로 마무리합니다.]",
-          "Reference: https://www.zespri.com/en-US/recipedetail/barbecued-prawn-kabobs-with-green-kiwifruit"
-        ]
+          "[새우, 키위, 파프리카를 꼬치에 꽂습니다. 그릴 또는 팬에 구워 익힙니다. 라임즙을 뿌리고 칠리 플레이크로 마무리합니다.]"
+        ],
+        reference: "https://www.zespri.com/en-US/recipedetail/barbecued-prawn-kabobs-with-green-kiwifruit"
       },
       "땅콩버터": {
         name: "Frozen Banana Chocolate Bites (초콜릿 바나나 한입 디저트)",
@@ -63,9 +76,9 @@
           "1. Slice banana and sandwich with nut butter.",
           "2. Dip in melted dark chocolate.",
           "3. Freeze until firm.",
-          "[바나나를 썰고, 두 조각 사이에 땅콩버터를 넣습니다. 녹인 다크 초콜릿에 담급니다. 냉동실에서 굳힙니다.]",
-          "Reference: https://www.meatloafandmelodrama.com/frozen-chocolate-banana-bites/"
-        ]
+          "[바나나를 썰고, 두 조각 사이에 땅콩버터를 넣습니다. 녹인 다크 초콜릿에 담급니다. 냉동실에서 굳힙니다.]"
+        ],
+        reference: "https://www.meatloafandmelodrama.com/frozen-chocolate-banana-bites/"
       }
     };
 
@@ -73,11 +86,17 @@
       const recipe = recipes[ingredient];
       title.textContent = recipe.name;
       container.innerHTML = "";
+
       recipe.steps.forEach(step => {
         const p = document.createElement('p');
         p.textContent = step;
         container.appendChild(p);
       });
+
+      const ref = document.createElement('div');
+      ref.className = 'reference';
+      ref.innerHTML = `🔗 Reference: <a href="${recipe.reference}" target="_blank">${recipe.reference}</a>`;
+      container.appendChild(ref);
     } else {
       title.textContent = "레시피 없음";
       container.innerHTML = "<p>선택된 재료에 대한 레시피가 없습니다.</p>";

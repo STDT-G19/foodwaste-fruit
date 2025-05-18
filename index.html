@@ -12,24 +12,24 @@
   <p><strong>과일과 어울릴 재료를 골라주세요 (하나만)</strong></p>
 
   <div class="ingredients">
-    <div class="ingredient" onclick="selectIngredient('꿀')">
-      <img src="food_picture/honey.jpg" alt="꿀">
+    <div class="ingredient" data-name="꿀" onclick="selectIngredient(this)">
+      <img src="food_picture/honey.jpg" alt="꿀 이미지">
       <span>꿀</span>
     </div>
-    <div class="ingredient" onclick="selectIngredient('토마토')">
-      <img src="food_picture/tomato.jpg" alt="토마토">
+    <div class="ingredient" data-name="토마토" onclick="selectIngredient(this)">
+      <img src="food_picture/tomato.jpg" alt="토마토 이미지">
       <span>토마토</span>
     </div>
-    <div class="ingredient" onclick="selectIngredient('요거트')">
-      <img src="food_picture/yogurt.jpg" alt="요거트">
+    <div class="ingredient" data-name="요거트" onclick="selectIngredient(this)">
+      <img src="food_picture/yogurt.jpg" alt="요거트 이미지">
       <span>요거트</span>
     </div>
-    <div class="ingredient" onclick="selectIngredient('새우')">
-      <img src="food_picture/shrimp.jpg" alt="새우">
+    <div class="ingredient" data-name="새우" onclick="selectIngredient(this)">
+      <img src="food_picture/shrimp.jpg" alt="새우 이미지">
       <span>새우</span>
     </div>
-    <div class="ingredient" onclick="selectIngredient('땅콩버터')">
-      <img src="food_picture/peanut.jpg" alt="땅콩버터">
+    <div class="ingredient" data-name="땅콩버터" onclick="selectIngredient(this)">
+      <img src="food_picture/peanut.jpg" alt="땅콩버터 이미지">
       <span>땅콩버터</span>
     </div>
   </div>
@@ -41,11 +41,10 @@
   <script>
     let selectedIngredient = "";
 
-    function selectIngredient(name) {
+    function selectIngredient(element) {
       document.querySelectorAll('.ingredient').forEach(el => el.classList.remove('selected'));
-      const target = [...document.querySelectorAll('.ingredient')].find(el => el.innerText.includes(name));
-      target.classList.add('selected');
-      selectedIngredient = name;
+      element.classList.add('selected');
+      selectedIngredient = element.dataset.name;
       document.querySelector('.next-btn').style.display = 'inline-block';
     }
 
