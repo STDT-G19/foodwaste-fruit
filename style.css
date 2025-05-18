@@ -1,74 +1,80 @@
+/* 기본 배경 및 텍스트 스타일 */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #fdfdfd;
+  font-family: "Arial", sans-serif;
   margin: 0;
-  padding: 20px;
-  text-align: center;
+  padding: 30px 20px;
+  background-color: #fdfdfd;
   color: #2c3e50;
-}
-
-h1 {
-  margin-top: 10px;
-}
-
-.main-img {
-  width: 300px;
-  border-radius: 15px;
-  margin-bottom: 15px;
-}
-
-.ingredients {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin: 20px 0;
-}
-
-.ingredient {
-  border: 2px solid #ddd;
-  border-radius: 10px;
-  padding: 10px;
-  background: #fff;
-  cursor: pointer;
-  width: 130px;
   text-align: center;
-  transition: 0.3s;
-  font-weight: bold;
 }
 
-.ingredient img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 5px;
+/* 상단 제목 스타일 */
+h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
 }
 
-.ingredient span {
+/* 소제목 */
+h2 {
+  margin-top: 30px;
+  font-size: 1.3em;
+  color: #34495e;
+}
+
+/* 레시피 메인 이미지 스타일 */
+.recipe-img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin: 25px auto 30px;
   display: block;
-  margin-top: 5px;
+  border-radius: 15px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
-.ingredient.selected {
-  background-color: #dfffe0;
-  border-color: #2ecc71;
+.recipe-img:hover {
+  transform: scale(1.02);
 }
 
-.next-btn {
-  margin-top: 25px;
-  padding: 10px 25px;
-  font-size: 1.1em;
-  background-color: #3498db;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  display: none;
+/* 레시피 내용 텍스트 정렬 */
+.recipe-text {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+  line-height: 1.7;
 }
 
+/* 리스트 스타일 */
+.recipe-text ul {
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.recipe-text li {
+  margin-bottom: 8px;
+}
+
+/* Reference 링크 스타일 */
+.reference {
+  font-size: 0.85em;
+  font-style: italic;
+  margin-top: 30px;
+  text-align: left;
+  color: #555;
+}
+
+.reference a {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+/* 푸터 스타일 */
 footer {
-  margin-top: 40px;
+  margin-top: 50px;
   font-size: 0.9em;
-  color: #777;
+  color: #999;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
 }
