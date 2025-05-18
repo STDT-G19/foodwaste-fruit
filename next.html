@@ -7,14 +7,14 @@
 </head>
 <body>
   <h1 id="title">레시피</h1>
-  <div id="recipe-container">로딩 중...</div>
+  <div id="recipe-container"></div>
 
   <footer>한양대 인터칼리지학과 G19</footer>
 
   <script>
     const ingredient = localStorage.getItem('selectedIngredient');
-    const container = document.getElementById('recipe-container');
     const title = document.getElementById('title');
+    const container = document.getElementById('recipe-container');
 
     const recipes = {
       "꿀": {
@@ -38,7 +38,7 @@
         ]
       },
       "요거트": {
-        name: "Berry Yogurt Parfait (베리 요거트 파르페)",
+        name: "Berry Yogurt Parfait with Granola (베리 요거트 파르페)",
         steps: [
           "1. Layer yogurt, berries, and granola in a glass.",
           "2. Repeat layers.",
@@ -73,9 +73,9 @@
       const recipe = recipes[ingredient];
       title.textContent = recipe.name;
       container.innerHTML = "";
-      recipe.steps.forEach(line => {
+      recipe.steps.forEach(step => {
         const p = document.createElement('p');
-        p.textContent = line;
+        p.textContent = step;
         container.appendChild(p);
       });
     } else {
